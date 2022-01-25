@@ -23,7 +23,7 @@ const HeaderLeft = styled.div`
 `
 
 const StyledAvatar = styled(Avatar)`
-  margin-left: 20px;
+  margin-left: 16px;
 `
 
 const StyledTimeIcon = styled(AccessTimeIcon)`
@@ -80,7 +80,7 @@ const HeaderRight = styled.div`
 
 const StyledHelpIcon = styled(HelpIcon)`
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 16px;
 `
 
 export const Header = () => {
