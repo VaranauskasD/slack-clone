@@ -1,2 +1,2 @@
-# slack-clone
-Slack Clone app using React, Redux &amp; Firebase Hooks
+#slack-clone
+A Slack clone app created using React, Redux & Firebase
