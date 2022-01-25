@@ -30,12 +30,17 @@ const StyledTimeIcon = styled(AccessTimeIcon)`
   margin-right: 20px;
 `
 
-const HeaderSearch = styled.div`
+const HeaderSearchContainer = styled.div`
   flex: 0.4;
+`
+
+const HeaderSearch = styled.div`
   display: flex;
   align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 6px;
+  margin-left: 20px;
+  margin-right: 20px;
 
   :focus-within {
     border: 2px solid rgba(255, 255, 255, 1);
@@ -90,10 +95,12 @@ export const Header = () => {
         <StyledAvatar />
         <StyledTimeIcon />
       </HeaderLeft>
-      <HeaderSearch>
-        <StyledSearchIcon />
-        <StyledInput placeholder="Search" />
-      </HeaderSearch>
+      <HeaderSearchContainer>
+        <HeaderSearch>
+          <StyledSearchIcon />
+          <StyledInput placeholder="Search" />
+        </HeaderSearch>
+      </HeaderSearchContainer>
       <HeaderRight>
         <StyledHelpIcon />
       </HeaderRight>
