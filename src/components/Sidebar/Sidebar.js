@@ -8,7 +8,7 @@ import { SidebarNav } from './SidebarNav'
 import { SidebarChannels } from './SidebarChannels'
 
 const SidebarContainer = styled.div`
-  flex: 0.3;
+  flex: 0.15;
   background-color: var(--slack-color);
   border-top: 2px solid #49264b;
   color: white;

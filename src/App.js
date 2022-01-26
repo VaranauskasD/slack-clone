@@ -1,10 +1,11 @@
 import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { Home } from './pages'
-import { Header, Sidebar } from './components'
+import { Header, Sidebar, Chat } from './components'
+import { appSlice, selectRoomId } from './features/counter/appSlice'
 
 const AppBody = styled.div`
   display: flex;
@@ -13,6 +14,8 @@ const AppBody = styled.div`
 `
 
 const App = () => {
+  const roomId = useSelector(selectRoomId)
+  console.log(roomId)
   return (
     <div className="App">
       <Router>
@@ -21,7 +24,7 @@ const App = () => {
           <AppBody>
             <Sidebar />
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Chat channelName={roomId} />} />
             </Routes>
           </AppBody>
         </React.Fragment>

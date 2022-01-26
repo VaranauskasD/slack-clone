@@ -16,23 +16,16 @@ const SidebarOptionContainer = styled.button`
   }
 `
 
-const SidebarOptionChannel = styled.div``
-
 const StyledOption = styled.span`
   font-size: 12px;
+  text-align: left;
 `
 
 export const SidebarOption = ({ Icon, title }) => {
   return (
     <SidebarOptionContainer>
       <Icon fontSize="small" style={{ padding: 10, paddingLeft: 0 }} />
-      {Icon ? (
-        <StyledOption>{title}</StyledOption>
-      ) : (
-        <SidebarOptionChannel>
-          <span>#{title}</span>
-        </SidebarOptionChannel>
-      )}
+      {Icon && <StyledOption>{title}</StyledOption>}
     </SidebarOptionContainer>
   )
 }

@@ -3,7 +3,12 @@ import styled from 'styled-components'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AddIcon from '@mui/icons-material/Add'
 
+import { firebaseApp, db } from '../../firebase'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { useCollection } from 'react-firebase-hooks/firestore'
+
 import { SidebarOption } from './SidebarOption'
+import { SidebarChannel } from './SidebarChannel'
 
 const ChannelsContainer = styled.div`
   border-bottom: 1px solid #49264b;
@@ -21,6 +26,7 @@ const StyledButton = styled.button`
   border: none;
   color: white;
   width: 100%;
+  text-align: left;
 
   &:focus {
     outline: 2px solid white;
@@ -30,6 +36,24 @@ const StyledButton = styled.button`
 `
 
 export const SidebarChannels = () => {
+  const [channels, loading, error] = useCollection(
+    collection(getFirestore(firebaseApp), 'rooms')
+  )
+
+  const handleClick = () => {
+    const channelName = prompt('Please enter the channel name')
+
+    if (channelName) {
+      try {
+        const docRef = addDoc(collection(db, 'rooms'), {
+          name: channelName,
+        })
+      } catch (e) {
+        console.error('Error adding document: ', e)
+      }
+    }
+  }
+
   return (
     <ChannelsContainer>
       <StyledButton>
@@ -40,10 +64,21 @@ export const SidebarChannels = () => {
         Channels
       </StyledButton>
       <hr />
-      <StyledButton>
+      <StyledButton onClick={handleClick}>
         <AddIcon fontSize="small" style={{ padding: 10, paddingLeft: 0 }} />
         Add Channel
       </StyledButton>
+      {channels && (
+        <React.Fragment>
+          {channels.docs.map((doc) => (
+            <SidebarChannel
+              key={doc.id}
+              roomId={doc.id}
+              title={doc.data().name}
+            />
+          ))}
+        </React.Fragment>
+      )}
     </ChannelsContainer>
   )
 }
