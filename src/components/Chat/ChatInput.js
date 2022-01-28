@@ -47,19 +47,7 @@ const ChatInputContainer = styled.div`
 export const ChatInput = ({ channelName, channelId }) => {
   const inputRef = useRef(null)
 
-  const sendMessage = (e) => {
-    e.preventDefault()
-
-    if (channelName) {
-      try {
-        const docRef = addDoc(collection(db.docRef(channelId), 'messages'), {
-          message: inputRef.current.value,
-        })
-      } catch (e) {
-        console.error('Error adding document: ', e)
-      }
-    }
-  }
+  const sendMessage = (e) => {}
 
   return (
     <ChatInputContainer>
