@@ -47,6 +47,10 @@ const ChatInputContainer = styled.div`
 export const ChatInput = ({ channelName, channelId }) => {
   const inputRef = useRef(null)
 
+  const [channels, loading, error] = useCollection(
+    collection(getFirestore(firebaseApp), 'rooms')
+  )
+
   const sendMessage = (e) => {}
 
   return (
