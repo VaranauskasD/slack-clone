@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 
 import { firebaseApp, db } from '../../firebase'
-import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { collection, setDoc, doc } from 'firebase/firestore'
 
 const ChatInputContainer = styled.div`
   border-radius: 20px;
@@ -57,7 +57,7 @@ export const ChatInput = ({ channelName, channelId }) => {
     <ChatInputContainer>
       <form>
         <input ref={inputRef} placeholder={'Message #Room'} />
-        <button type="submit" onClick={sendMessage}>
+        <button aria-label="send" type="submit" onClick={sendMessage}>
           Send
         </button>
       </form>
